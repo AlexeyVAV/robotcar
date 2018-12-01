@@ -37,27 +37,27 @@ class Motor:
         self.__pw1.start(25)
         self.__pw2.start(25)
 
-    def forward(self):
+    def right(self):
         GPIO.output(self.m1_in1,GPIO.HIGH)
         GPIO.output(self.m1_in2,GPIO.LOW)
         GPIO.output(self.m2_in1,GPIO.HIGH)
         GPIO.output(self.m2_in2,GPIO.LOW)
-        print("forward")
+        print("right")
         #temp1 = 1
 
-    def backward(self):
+    def left(self):
         GPIO.output(self.m1_in1, GPIO.LOW)
         GPIO.output(self.m1_in2, GPIO.HIGH)
         GPIO.output(self.m2_in1, GPIO.LOW)
-        GPIO.output(self.m2_in1, GPIO.HIGH)
-        print("backward")
+        GPIO.output(self.m2_in2, GPIO.HIGH)
+        print("left")
         #temp1 = 0
 
     def stop(self):
         GPIO.output(self.m1_in1, GPIO.LOW)
         GPIO.output(self.m1_in2, GPIO.LOW)
         GPIO.output(self.m2_in1, GPIO.LOW)
-        GPIO.output(self.m2_in1, GPIO.LOW)
+        GPIO.output(self.m2_in2, GPIO.LOW)
         print("stop")
 
     def low(self):
@@ -75,19 +75,19 @@ class Motor:
         self.__pw1.ChangeDutyCycle(85)
         self.__pw2.ChangeDutyCycle(85)
 
-    def left(self):
+    def forward(self):
         GPIO.output(self.m1_in1, GPIO.LOW)
-        GPIO.output(self.m1_in2, GPIO.LOW)
+        GPIO.output(self.m1_in2, GPIO.HIGH)
         GPIO.output(self.m2_in1, GPIO.HIGH)
         GPIO.output(self.m2_in2, GPIO.LOW)
-        print("left")
+        print("forward")
 
-    def right(self):
+    def backward(self):
         GPIO.output(self.m1_in1, GPIO.HIGH)
         GPIO.output(self.m1_in2, GPIO.LOW)
         GPIO.output(self.m2_in1, GPIO.LOW)
-        GPIO.output(self.m2_in2, GPIO.LOW)
-        print("right")
+        GPIO.output(self.m2_in2, GPIO.HIGH)
+        print("backward")
 
     def __del__(self):
         GPIO.cleanup()
@@ -165,4 +165,3 @@ if __name__ == "__main__":
         else:
             print("<<<  wrong data  >>>")
             print("please enter the defined data to continue.....")
-
