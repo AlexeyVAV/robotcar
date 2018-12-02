@@ -1,7 +1,6 @@
 import RPi.GPIO as GPIO
 from time import sleep
 import curses
-import time
 
 class Motor:
 
@@ -40,18 +39,22 @@ class Motor:
         self.__pw2.start(25)
 
     def right(self):
-        GPIO.output(self.m1_in1,GPIO.HIGH)
+        self.__pw1 = GPIO.PWM(self.m1_en, 0)
+        GPIO.output(self.m1_in1,GPIO.LOW)
         GPIO.output(self.m1_in2,GPIO.LOW)
+        # self.__pw2 = GPIO.PWM(self.m2_en, 1000)
         GPIO.output(self.m2_in1,GPIO.HIGH)
         GPIO.output(self.m2_in2,GPIO.LOW)
-        print("right")
+        print("rigt")
         #temp1 = 1
 
     def left(self):
+        # self.__pw1 = GPIO.PWM(self.m1_en, 1000)
         GPIO.output(self.m1_in1, GPIO.LOW)
         GPIO.output(self.m1_in2, GPIO.HIGH)
+        self.__pw2 = GPIO.PWM(self.m2_en, 0)
         GPIO.output(self.m2_in1, GPIO.LOW)
-        GPIO.output(self.m2_in2, GPIO.HIGH)
+        GPIO.output(self.m2_in2, GPIO.LOW)
         print("left")
         #temp1 = 0
 
@@ -61,20 +64,6 @@ class Motor:
         GPIO.output(self.m2_in1, GPIO.LOW)
         GPIO.output(self.m2_in2, GPIO.LOW)
         print("stop")
-
-    def forward(self):
-        GPIO.output(self.m1_in1, GPIO.LOW)
-        GPIO.output(self.m1_in2, GPIO.HIGH)
-        GPIO.output(self.m2_in1, GPIO.HIGH)
-        GPIO.output(self.m2_in2, GPIO.LOW)
-        print("forward")
-
-    def backward(self):
-        GPIO.output(self.m1_in1, GPIO.HIGH)
-        GPIO.output(self.m1_in2, GPIO.LOW)
-        GPIO.output(self.m2_in1, GPIO.LOW)
-        GPIO.output(self.m2_in2, GPIO.HIGH)
-        print("backward")
 
     def low(self):
         print("low")
@@ -90,6 +79,22 @@ class Motor:
         print("high")
         self.__pw1.ChangeDutyCycle(85)
         self.__pw2.ChangeDutyCycle(85)
+
+    def forward(self):
+        # self.__pw1 = GPIO.PWM(self.m1_en, 1000)
+        # self.__pw2 = GPIO.PWM(self.m2_en, 1000)
+        GPIO.output(self.m1_in1, GPIO.LOW)
+        GPIO.output(self.m1_in2, GPIO.HIGH)
+        GPIO.output(self.m2_in1, GPIO.HIGH)
+        GPIO.output(self.m2_in2, GPIO.LOW)
+        print("forward")
+
+    def backward(self):
+        GPIO.output(self.m1_in1, GPIO.HIGH)
+        GPIO.output(self.m1_in2, GPIO.LOW)
+        GPIO.output(self.m2_in1, GPIO.LOW)
+        GPIO.output(self.m2_in2, GPIO.HIGH)
+        print("backward")
 
     def __del__(self):
         GPIO.cleanup()
@@ -172,9 +177,63 @@ def main(win):
 
 ##########################################################################################################################
 if __name__ == "__main__":
-    t = time.time()
     print("Start....")
     curses.wrapper(main)
-    print ("Active time {0}s".format(round(time.time() - t,3)))
 
 ########################################################################################################################
+    # while (1):
+    #     x = raw_input()
+    #
+    #     if x == 'm':
+    #         print("run")
+    #         if (temp1 == 1):
+    #             robotMotor.forward()
+    #             x = 'z'
+    #         else:
+    #             robotMotor.backward()
+    #             x='z'
+    #
+    #     elif x=='s':
+    #         robotMotor.stop()
+    #         x='z'
+    #
+    #     elif x=='f':
+    #         robotMotor.forward()
+    #         temp1 = 1
+    #         x='z'
+    #
+    #     elif x=='b':
+    #         robotMotor.backward()
+    #         temp1 = 0
+    #         x='z'
+    #
+    #     elif x=='1':
+    #         robotMotor.low()
+    #         x='z'
+    #
+    #     elif x=='2':
+    #         robotMotor.medium()
+    #         x='z'
+    #
+    #     elif x=='3':
+    #         robotMotor.high()
+    #         x='z'
+    #
+    #     elif x=='l':
+    #         robotMotor.left()
+    #         x='z'
+    #
+    #     elif x=='r':
+    #         robotMotor.right()
+    #         x='z'
+    #
+    #     elif x=='e':
+    #         del robotMotor
+    #         break
+    #
+    #     else:
+    #         print("<<<  wrong data  >>>")
+    #         print("please enter the defined data to continue.....")
+### -------------------------------------
+
+# def main(win):
