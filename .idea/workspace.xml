@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f99292e0-1479-4113-86fa-038c8e485f88" name="Default" comment="workin motors">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/motors/l298n_motor_v4.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/motors/l298n_motor_v4.py" afterDir="false" />
-    </list>
+    <list default="true" id="f99292e0-1479-4113-86fa-038c8e485f88" name="Default" comment="v4 working v5 in dev" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +12,7 @@
     <session id="-1438637912">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.5" value="1" />
@@ -38,12 +35,12 @@
         <counts>
           <entry key="dummy" value="1" />
           <entry key="py" value="1442" />
-          <entry key="txt" value="13" />
+          <entry key="txt" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="14" />
+          <entry key="PLAIN_TEXT" value="35" />
           <entry key="Python" value="1442" />
         </counts>
       </usages-collector>
@@ -75,8 +72,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/motors/l298n_motor_v5.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="153" column="31" lean-forward="true" selection-start-line="153" selection-start-column="31" selection-end-line="153" selection-end-column="31" />
+            <state relative-caret-position="345">
+              <caret line="167" column="19" lean-forward="true" selection-start-line="167" selection-start-column="19" selection-end-line="167" selection-end-column="19" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -281,12 +278,18 @@
       <option name="project" value="LOCAL" />
       <updated>1543689529069</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="v4 working v5 in dev">
+      <created>1543775710173</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1543775710173</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="57" y="27" width="1863" height="1053" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23423913" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -312,7 +315,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="workin motors" />
-    <option name="LAST_COMMIT_MESSAGE" value="workin motors" />
+    <MESSAGE value="v4 working v5 in dev" />
+    <option name="LAST_COMMIT_MESSAGE" value="v4 working v5 in dev" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///opt/intel/intelpython2/lib/python2.7/curses/__init__.py">
@@ -360,8 +364,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/motors/l298n_motor_v5.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="153" column="31" lean-forward="true" selection-start-line="153" selection-start-column="31" selection-end-line="153" selection-end-column="31" />
+        <state relative-caret-position="345">
+          <caret line="167" column="19" lean-forward="true" selection-start-line="167" selection-start-column="19" selection-end-line="167" selection-end-column="19" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
