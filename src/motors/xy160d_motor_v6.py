@@ -11,18 +11,7 @@ class Motor:
         self.m2_in1 = m2_in1
         self.m2_in2 = m2_in2
         self.m2_en = m2_en
-        #self.temp1 = 1
 
-        # Set GPIO
-        # in1 = 24
-        # in2 = 23
-        # en = 25
-        # temp1 = 1
-        #
-        # # M2
-        # in4 = 17
-        # in3 = 27
-        # en2 = 22
         GPIO.setmode(GPIO.BCM)
         #
         GPIO.setup(self.m1_in1, GPIO.OUT)
@@ -38,24 +27,41 @@ class Motor:
         self.__pw1.start(25)
         self.__pw2.start(25)
 
-    def right(self):
-        self.__pw1 = GPIO.PWM(self.m1_en, 0)
-        GPIO.output(self.m1_in1,GPIO.LOW)
+    def forward_m1(self,pwm1):
+        self.__pw1.ChangeDutyCycle(pwm1)
+        GPIO.output(self.m1_in1,GPIO.HIGH)
         GPIO.output(self.m1_in2,GPIO.LOW)
-        # self.__pw2 = GPIO.PWM(self.m2_en, 1000)
-        GPIO.output(self.m2_in1,GPIO.HIGH)
-        GPIO.output(self.m2_in2,GPIO.LOW)
-        print("rigt")
-        #temp1 = 1
 
-    def left(self):
-        # self.__pw1 = GPIO.PWM(self.m1_en, 1000)
+    def forward_m2(self,pwm2):
+        self.__pw2.ChangeDutyCycle(pwm2)
+        GPIO.output(self.m2_in1,GPIO.LOW)
+        GPIO.output(self.m2_in2,GPIO.HIGH)
+
+    def backward_m1(self,pwm1):
+        self.__pw1.ChangeDutyCycle(pwm1)
         GPIO.output(self.m1_in1, GPIO.LOW)
         GPIO.output(self.m1_in2, GPIO.HIGH)
-        self.__pw2 = GPIO.PWM(self.m2_en, 0)
-        GPIO.output(self.m2_in1, GPIO.LOW)
+
+    def backward_m2(self,pwm2):
+        self.__pw2.ChangeDutyCycle(pwm2)
+        GPIO.output(self.m2_in1, GPIO.HIGH)
         GPIO.output(self.m2_in2, GPIO.LOW)
-        print("left")
+
+    ### old version ###
+    def forward(self):
+        GPIO.output(self.m1_in1,GPIO.HIGH)
+        GPIO.output(self.m1_in2,GPIO.LOW)
+        GPIO.output(self.m2_in1,GPIO.LOW)
+        GPIO.output(self.m2_in2,GPIO.HIGH)
+        print("forward")
+        #temp1 = 1
+
+    def backward(self):
+        GPIO.output(self.m1_in1, GPIO.LOW)
+        GPIO.output(self.m1_in2, GPIO.HIGH)
+        GPIO.output(self.m2_in1, GPIO.HIGH)
+        GPIO.output(self.m2_in2, GPIO.LOW)
+        print("backward")
         #temp1 = 0
 
     def stop(self):
@@ -80,21 +86,19 @@ class Motor:
         self.__pw1.ChangeDutyCycle(85)
         self.__pw2.ChangeDutyCycle(85)
 
-    def forward(self):
-        # self.__pw1 = GPIO.PWM(self.m1_en, 1000)
-        # self.__pw2 = GPIO.PWM(self.m2_en, 1000)
+    def left(self):
         GPIO.output(self.m1_in1, GPIO.LOW)
-        GPIO.output(self.m1_in2, GPIO.HIGH)
-        GPIO.output(self.m2_in1, GPIO.HIGH)
-        GPIO.output(self.m2_in2, GPIO.LOW)
-        print("forward")
-
-    def backward(self):
-        GPIO.output(self.m1_in1, GPIO.HIGH)
         GPIO.output(self.m1_in2, GPIO.LOW)
         GPIO.output(self.m2_in1, GPIO.LOW)
         GPIO.output(self.m2_in2, GPIO.HIGH)
-        print("backward")
+        print("left")
+
+    def right(self):
+        GPIO.output(self.m1_in1, GPIO.HIGH)
+        GPIO.output(self.m1_in2, GPIO.LOW)
+        GPIO.output(self.m2_in1, GPIO.LOW)
+        GPIO.output(self.m2_in2, GPIO.LOW)
+        print("right")
 
     def __del__(self):
         GPIO.cleanup()
@@ -110,6 +114,7 @@ def main(win):
     en2 = 19
 
     robotMotor = Motor(m1_in1=in1, m1_in2=in2, m1_en=en1, m2_in1=in3, m2_in2=in4, m2_en=en2)
+    #robotMotor = Motor(m1_in1=27, m1_in2=22, m1_en=16, m2_in1=17, m2_in2=4, m2_en=19)
     print("\n")
     print("The default speed & direction of motor is LOW & Forward.....")
     print("m-run \
