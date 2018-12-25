@@ -74,6 +74,9 @@ while not done:
         if event.type == pygame.JOYBUTTONUP:
             print("Joystick button released.")
 
+       #if event.type == pygame.JOYAXISMOTION:
+            #print("Joystick Axis Motion.")
+
     # DRAWING STEP
     # First, clear the screen to white. Don't put other drawing commands
     # above this, or they will be erased with this command.
