@@ -84,12 +84,13 @@ def main():
             if joystick.get_button(8):
                 pygame.quit()
                 break
-                exit()
+
 
         # Limit to 60 frames per second
         clock.tick(30)
 
     pygame.quit()
+    exit()
 
 if __name__ == '__main__':
     main()
