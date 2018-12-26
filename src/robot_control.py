@@ -1,5 +1,5 @@
 import pygame
-from motors/xy160d_motor_v6 import Motor
+from xy160d_motor_v6 import Motor
 
 
 def speed_control(speed_gear,speed_sequence): # Speed control
@@ -47,7 +47,8 @@ def main():
     done = False
 
     speed_gear = 0.3
-
+    
+    power = 20
     # -------- Main Program Loop -----------
     while not done:
         # EVENT PROCESSING STEP
@@ -70,18 +71,18 @@ def main():
 
             if axis_1 == 0:
 
-                print("M1 Stop. Power : {}".format(axis_1))
-                robot_motor.stop_m1(pwm1 = (axis_1 * speed_gear))
+                print("M1 Stop. Power : {}".format(axis_1 * power))
+                robot_motor.stop_m1(pwm1 = (axis_1 * speed_gear*power))
 
             elif axis_1 < 0:
 
-                print("M1 Forward. Power : {}".format(axis_1 * speed_gear * -1))
-                robot_motor.forward_m1(pwm1 = (axis_1 * speed_gear * -1))
+                print("M1 Forward. Power : {}".format(axis_1 * speed_gear * -1 * power))
+                robot_motor.forward_m1(pwm1 = (axis_1 * speed_gear * -1 * power))
 
             elif axis_1 > 0:
 
-                print("M1 Backward. Power : {}".format(axis_1 * speed_gear * -1))
-                robot_motor.backward_m1(pwm1 = (axis_1 * speed_gear))
+                print("M1 Backward. Power : {}".format(axis_1 * speed_gear * -1 * power))
+                robot_motor.backward_m1(pwm1 = (axis_1 * speed_gear * power))
 
 
             # Motor 2 control
@@ -89,18 +90,18 @@ def main():
 
             if axis_4 == 0:
 
-                print("M2 Stop. Power : {}".format(axis_4))
-                robot_motor.stop_m1(pwm2 = (axis_4 * speed_gear))
+                print("M2 Stop. Power : {}".format(axis_4 * power))
+                robot_motor.stop_m2(pwm2 = (axis_4 * speed_gear * power))
 
             elif axis_4 < 0:
 
-                print("M2 Forward. Power : {}".format(axis_4 * speed_gear * -1))
-                robot_motor.forward_m2(pwm2 = (axis_4 * speed_gear * -1))
+                print("M2 Forward. Power : {}".format(axis_4 * speed_gear * -1 * power))
+                robot_motor.forward_m2(pwm2 = (axis_4 * speed_gear * -1 * power))
 
             elif axis_4 > 0:
 
-                print("M2 Backward. Power : {}".format(axis_4 * speed_gear * -1))
-                robot_motor.backward_m2(pwm2=(axis_4 * speed_gear))
+                print("M2 Backward. Power : {}".format(axis_4 * speed_gear * -1 * power))
+                robot_motor.backward_m2(pwm2=(axis_4 * speed_gear * power))
 
 
             if joystick.get_button(4):
