@@ -36,7 +36,7 @@ void setup()
   pinMode(triggerPin, OUTPUT);   //Define pin
   pinMode(echoPin, INPUT);
   pinMode(triggerPin2, OUTPUT);   //Define pin
-  pinMode(echoPin2, INPUT);  
+  pinMode(echoPin2, INPUT);
   //Serial.begin(9600);           //Starts the serial communication
   //Serial.begin(57600);          // Tested - Good
   Serial.begin(115200);           // Tested - Good
@@ -89,5 +89,5 @@ void loop()
   Serial.print(", ");
   Serial.print("""IR4"": ");
   Serial.print(digitalRead(ir4));
-  Serial.println("}");  
+  Serial.println("}");
 }
